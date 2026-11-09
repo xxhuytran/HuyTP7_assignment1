@@ -1,0 +1,15 @@
+build/
+*.o
+*.d
+*.exe
+*.out
+*.app/
+.DS_Store
+*.bak
+*.backup
+*.bin
+.env
+.env.*
+*.pem
+*.key
+secrets.*

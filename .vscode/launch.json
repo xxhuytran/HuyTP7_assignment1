@@ -1,0 +1,8 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {"name": "Debug app", "type": "lldb", "request": "launch", "program": "${workspaceFolder}/build/normal/student-score-manager", "args": ["data/students.csv"], "cwd": "${workspaceFolder}", "terminal": "integrated", "preLaunchTask": "build"},
+    {"name": "Debug app (DEBUG_LOG)", "type": "lldb", "request": "launch", "program": "${workspaceFolder}/build/debug-log/student-score-manager", "args": ["data/students.csv"], "cwd": "${workspaceFolder}", "terminal": "integrated", "preLaunchTask": "debug-log build"},
+    {"name": "Debug unit tests", "type": "lldb", "request": "launch", "program": "${workspaceFolder}/build/test/test-main", "args": [], "cwd": "${workspaceFolder}", "terminal": "integrated", "preLaunchTask": "test build"}
+  ]
+}
