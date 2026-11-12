@@ -14,23 +14,32 @@ struct Student {
 
 enum class SortKey { AverageDescending, NameAscending };
 
-// Add s to arr, updating count/capacity; return false for failure or pending implementation.
+// Kiểm tra và chèn s theo ID tăng dần; cập nhật arr/count/capacity.
+// Trả false nếu dữ liệu sai, ID trùng hoặc không cấp phát được bộ nhớ.
 bool addStudent(Student*& arr, int& count, int& capacity, const Student& s);
-// Remove id from arr and update count; return false for failure or pending implementation.
+// Xóa ID khỏi arr đã sắp xếp và giảm count; không đổi vùng nhớ đã cấp phát.
+// Trả false nếu arr/count/id sai hoặc không tìm thấy ID.
 bool removeStudent(Student* arr, int& count, uint32_t id);
-// Set one score by id (subject 0..2); return false for failure or pending implementation.
+// Sửa điểm môn subject (0..2) của ID, tính lại average/rank.
+// Trả false nếu dữ liệu sai hoặc không tìm thấy ID; khi đó không sửa arr.
 bool updateScore(Student* arr, int count, uint32_t id, int subject, float score);
-// Search sorted arr within inclusive low..high; return index, -1 if absent, -2 while pending.
+// Tìm ID bằng đệ quy trong arr tăng dần, từ low đến high (bao gồm hai đầu).
+// Trả vị trí nếu tìm thấy, -1 nếu không có hoặc tham số sai; high phải là chỉ số hợp lệ.
 int findById(const Student* arr, int low, int high, uint32_t id);
-// Average n scores; return NaN for invalid input or pending implementation.
+// Tính trung bình n điểm; trả -1 nếu con trỏ, n hoặc điểm không hợp lệ.
 float calcAverage(const float* scores, int n = NUM_SUBJECTS);
-// Print one student; currently reports pending implementation.
+// Xếp loại theo điểm trung bình; trả '?' nếu average ngoài khoảng 0..10.
+char calcRank(float average);
+// Kiểm tra id, name, scores của s; nếu đúng thì điền average/rank và trả true.
+// Trả false nếu dữ liệu sai; khi đó s không bị thay đổi.
+bool prepareStudent(Student& s);
+// In một sinh viên s thành một dòng; không trả kết quả.
 void printStudent(const Student& s);
-// Print count students from arr; currently reports pending implementation.
+// In count sinh viên trong arr; báo mảng rỗng hoặc tham số sai; không trả kết quả.
 void printStudent(const Student* arr, int count);
-// Swap a and b; currently reports pending implementation.
+// Đổi chỗ hai sinh viên a và b; không trả kết quả.
 void swapStudent(Student& a, Student& b);
-// Sort count pointers in view by key, leaving original array untouched; currently pending.
+// Sắp xếp count con trỏ trong view theo key; không đổi mảng gốc.
 void sortView(const Student** view, int count, SortKey key);
 
 #endif
