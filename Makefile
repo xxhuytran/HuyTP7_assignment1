@@ -1,7 +1,7 @@
 CXX = clang++
 CXXFLAGS = -std=c++17 -Wall -Wextra -g -O0 -Iinc -MMD -MP
 
-APP_SRCS = src/main.cpp src/student.cpp src/fileio.cpp
+APP_SRCS = src/main.cpp src/assignment1_app.cpp src/student.cpp src/fileio.cpp
 TEST_SRCS = tests/test_main.cpp src/student.cpp src/fileio.cpp
 
 APP_OBJS = $(patsubst %.cpp,build/normal/%.o,$(APP_SRCS))
@@ -9,8 +9,8 @@ DEBUG_OBJS = $(patsubst %.cpp,build/debug-log/%.o,$(APP_SRCS))
 TEST_OBJS = $(patsubst %.cpp,build/test/%.o,$(TEST_SRCS))
 ASAN_OBJS = $(patsubst %.cpp,build/asan/%.o,$(APP_SRCS))
 
-.PHONY: all run debug-log test asan clean
-all: build/normal/student-score-manager
+.PHONY: all run debug-log test asan clean assignment2-app assignment2-demo assignment2-test assignment2-trace check
+all: build/normal/student-score-manager assignment2-app
 
 build/normal/student-score-manager: $(APP_OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
@@ -25,11 +25,27 @@ build/test/test-main: $(TEST_OBJS)
 
 test: build/test/test-main
 	./build/test/test-main
+	$(MAKE) -C assignment2 test
 
 build/asan/student-score-manager: $(ASAN_OBJS)
 	$(CXX) $(CXXFLAGS) -fsanitize=address -fno-omit-frame-pointer $^ -o $@
 
 asan: build/asan/student-score-manager
+
+assignment2-app:
+	$(MAKE) -C assignment2 app
+
+assignment2-demo:
+	$(MAKE) -C assignment2 demo
+
+assignment2-test:
+	$(MAKE) -C assignment2 test
+
+assignment2-trace:
+	$(MAKE) -C assignment2 trace
+
+check:
+	$(MAKE) -C assignment2 check
 
 run: all
 	./build/normal/student-score-manager data/students.csv
@@ -52,5 +68,6 @@ build/asan/%.o: %.cpp
 
 clean:
 	rm -rf build
+	$(MAKE) -C assignment2 clean
 
 -include $(APP_OBJS:.o=.d) $(DEBUG_OBJS:.o=.d) $(TEST_OBJS:.o=.d) $(ASAN_OBJS:.o=.d)

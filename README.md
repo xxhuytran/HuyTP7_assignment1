@@ -1,22 +1,27 @@
-# Student Score Manager
+# C++ Assignments: Student Score Manager và Smart Home Device Controller
 
-Chương trình C++17 quản lý điểm sinh viên bằng mảng động. Khi khởi động, chương trình đọc `data/students.csv` hoặc đường dẫn CSV truyền qua command line. Menu 0–9 cho phép xem, thêm, sửa, xóa, tìm, thống kê, sắp xếp và lưu dữ liệu.
+Repo chứa hai assignment. Chạy chương trình sẽ hiện menu chung: chọn **1** để vào Student Score Manager (Assignment 1), chọn **2** để xem skeleton của Smart Home Device Controller (Assignment 2), chọn **0** để thoát. Assignment 2 đã hoàn thành `Device`, `Light`, `Thermostat` và `SecurityCam`; Room và menu vẫn là skeleton; xem [README của Assignment 2](assignment2/README.md).
+
+Assignment 1 là chương trình C++17 quản lý điểm sinh viên bằng mảng động. Khi chọn bài 1, chương trình đọc `data/students.csv` hoặc đường dẫn CSV truyền qua command line. Menu 0–9 của bài 1 cho phép xem, thêm, sửa, xóa, tìm, thống kê, sắp xếp và lưu dữ liệu.
 
 ## Build và chạy trên macOS
 
 Nếu chưa có công cụ biên dịch, cài Apple Command Line Tools bằng `xcode-select --install`. Trong VS Code, cài Microsoft C/C++ và CodeLLDB, rồi mở cả thư mục project. Dùng task `build` hoặc Terminal:
 
 ```sh
-make all
-make run
-make test
+make all              # build cả app chung và skeleton Assignment 2
+make run              # menu chọn Assignment 1 hoặc 2
+make test             # Assignment 1 PASS; bốn class Assignment 2 PASS; TC-01..TC-10 SKIPPED
 make debug-log
 make asan
 ./build/asan/student-score-manager data/students.csv
+make check            # kiểm tra header/source của Assignment 2
+make assignment2-demo # build demo skeleton
+make assignment2-trace
 make clean
 ```
 
-`make run` dùng file mẫu `data/students.csv`. Để đọc file khác:
+`make run` hiện menu chung; sau khi chọn 1 sẽ dùng file mẫu `data/students.csv`. Để đọc file khác:
 
 ```sh
 ./build/normal/student-score-manager data/students_invalid.csv
@@ -35,8 +40,10 @@ Menu `8` ghi `data/students_saved.csv`; menu `9` ghi hoặc đọc `data/student
 - `inc/`: `Student`, cấu hình và khai báo hàm.
 - `src/student.cpp`: kiểm tra, quản lý mảng, tìm kiếm, in và sort.
 - `src/fileio.cpp`: đọc/ghi CSV và binary bằng C-style file I/O.
-- `src/main.cpp`: menu, nhập liệu và thống kê.
-- `tests/`: các phép kiểm tra tự động; chạy bằng `make test`.
+- `src/main.cpp`: menu chung chọn Assignment 1 hoặc 2.
+- `src/assignment1_app.cpp`: menu, nhập liệu và thống kê của Assignment 1.
+- `tests/`: các phép kiểm tra tự động của Assignment 1; chạy bằng `make test`.
+- `assignment2/`: skeleton độc lập của Smart Home Device Controller, có Makefile riêng.
 - `data/`: CSV mẫu hợp lệ, có lỗi và rỗng.
 - `docs/`: yêu cầu, checklist, mẫu Debug Report và kết quả kiểm tra.
 - `.vscode/`: task build và cấu hình LLDB.
