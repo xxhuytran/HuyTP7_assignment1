@@ -1,0 +1,15 @@
+
+=== Sensor report (sorted by average, descending) ===
+ID          Type    Count   Min       Max       Avg       MovingAvg   Alarms
+S1          SPEED   38      0.00      300.00    160.92    270.22      6
+T2          TEMP    35      22.10     108.20    63.57     56.79       4
+S2          SPEED   32      0.00      132.70    62.01     80.66       4
+T1          TEMP    31      26.10     102.20    61.63     57.52       0
+V2          VOLT    31      8.09      16.34     12.29     13.30       4
+V1          VOLT    25      8.03      16.40     11.56     11.92       7
+
+Total lines: 200, valid: 192, invalid: 8
+mergeSort matches std::sort: yes
+Workers: 4, processing time: 0 ms
+Report written to report.csv
+Found T1 (TEMP, group TEMP): count=31 avg=61.6258 alarms=0

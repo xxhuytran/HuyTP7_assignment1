@@ -1,0 +1,15 @@
+./build/test_main
+LinkedQueue
+RingBuffer
+ThreadSafeQueue
+algo
+parser
+TC-01 N=1 vs N=4 (and 2, 8)
+TC-02 invalid lines
+TC-03 missing file
+TC-04 alarms
+TC-05 large file, N=8, 5 runs
+TC-06 search
+TC-07 empty file
+
+Passed: 61, failed: 0
