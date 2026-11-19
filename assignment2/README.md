@@ -1,6 +1,6 @@
 # Assignment 2 — Smart Home Device Controller
 
-Assignment 2 đang được triển khai từng bước. `Device`, `Light`, `Thermostat` và `SecurityCam` đã có implementation và test riêng. `Room`, `ConsoleApp`, demo và menu vẫn là skeleton. Chương trình Assignment 2 hiện chỉ in `Skeleton only: implementation pending.`; `make test` chạy test bốn class đã làm rồi báo `SKIPPED` cho TC-01..TC-10 còn lại.
+Assignment 2 đã có đủ code: Device, Light, Thermostat, SecurityCam, Room, ConsoleApp, demo (`make demo`), menu (`make app`) và test TC-01..TC-10 (`make test`, PASS). Còn thiếu phần nộp: PNG/PDF class diagram, bằng chứng debugger, minh họa lỗi biên dịch khi tạo Device trực tiếp.
 
 ## Cấu trúc và build
 

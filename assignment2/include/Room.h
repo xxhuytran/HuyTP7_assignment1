@@ -14,16 +14,15 @@ private:
     void ensureCapacity(int requiredCapacity);
     // Dọn các thiết bị và mảng; mName được xử lý riêng.
     void clearDevices();
-    void swap(Room& other) noexcept;
 
 public:
     Room();
     explicit Room(const char* name, int initialCapacity = 2);
-    // TODO: Copy constructor phải clone từng thiết bị.
+    // Copy constructor clone từng thiết bị.
     Room(const Room& other);
-    // TODO: Copy assignment dùng copy-and-swap.
+    // Copy assignment: xóa dữ liệu cũ rồi clone lại từ other.
     Room& operator=(const Room& other);
-    // TODO: Destructor phải delete từng thiết bị, mảng và mName.
+    // Destructor delete từng thiết bị, mảng và mName.
     ~Room();
 
     const char* getName() const;
